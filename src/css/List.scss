@@ -1,0 +1,20 @@
+.todo_list {
+  li {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    input[type="checkbox"] {
+      display: none;
+    }
+    label {
+      display: flex;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+    svg {
+      font-size: 20px;
+    }
+  }
+}

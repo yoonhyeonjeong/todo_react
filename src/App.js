@@ -1,23 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+import React, { useState } from "react";
+import TodoWrap from "./component/TodoWrap";
+import TodoHead from "./component/TodoHead";
+import List from "./component/List";
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <TodoWrap>
+        <h2>Todo</h2>
+        <TodoHead />
+        <List />
+      </TodoWrap>
     </div>
   );
 }
