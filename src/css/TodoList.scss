@@ -1,5 +1,10 @@
 .todo_list {
   li {
+    button {
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
     list-style: none;
     display: flex;
     align-items: center;
@@ -15,6 +20,18 @@
     }
     svg {
       font-size: 20px;
+    }
+    .btn_wrap {
+      display: flex;
+      align-items: center;
+      margin-left: auto;
+      .btn_edit {
+        margin-right: 10px;
+      }
+    }
+    &.active {
+      color: #bbb;
+      text-decoration: line-through;
     }
   }
 }
