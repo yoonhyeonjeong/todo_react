@@ -15,7 +15,10 @@ function App() {
   const todoInsert = () => {
     // input value값 없으면 X
     if (!todo) {
-      return;
+      return; // 함수실행종료
+    }
+    if (todos.length > 9) {
+      return; // 함수실행종료
     }
     // 새로운 객체 형태의 변수 생성 해서 빈배열에 집어넣기
     const newTodo = {
@@ -25,6 +28,7 @@ function App() {
     setTodos([...todos, newTodo]);
     // insert 하고 남은값 초기화
     setTodo("");
+    console.log(todos.length);
   };
   // console.log("todos", todos.index);
   const todoDelete = (id) => {
@@ -34,9 +38,9 @@ function App() {
     const filterArray = copyArray.filter((e) => {
       return e.id !== id;
     });
-    console.log("filterArray", filterArray);
     setTodos(filterArray);
   };
+
   return (
     <div className="App">
       <TodoWrap>
@@ -45,6 +49,7 @@ function App() {
         </div>
         <TodoHead todoinsert={todoInsert} todocheck={todoCheck} todo={todo} />
         <TodoList todolist={todos} tododelete={todoDelete} setTodo={setTodos} />
+        {todos.length > 9 && "모달팝업띄울예정"}
       </TodoWrap>
     </div>
   );

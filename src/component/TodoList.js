@@ -4,7 +4,7 @@ import { BsCheckCircleFill, BsCheckCircle } from "react-icons/bs";
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 
 function TodoList(props) {
-  const { todolist, tododelete, setTodo } = props;
+  const { todolist, tododelete, setTodo, todoedit } = props;
   // 개별체크
   // 1. 리스트 추가할때마다 todot상태 저장하는 배열생성
   const [check, setCheck] = useState(todolist.map((todo) => todo.checked));
@@ -27,6 +27,18 @@ function TodoList(props) {
     });
     console.log(filterList);
     setTodo(filterList);
+  };
+
+  // input value값 수정
+  const [editText, setEditText] = useState("");
+  // console.log(todolist[0].text);
+  const todoEdit = () => {
+    setEditText(() => {
+      todolist.map((as, i) => {
+        return as.text;
+      });
+    });
+    console.log("editText", editText);
   };
   return (
     <ul className="todo_list">
@@ -53,7 +65,7 @@ function TodoList(props) {
             <button
               className="btn_edit"
               onClick={() => {
-                tododelete(todo.id);
+                todoEdit();
               }}
             >
               <AiFillEdit />
