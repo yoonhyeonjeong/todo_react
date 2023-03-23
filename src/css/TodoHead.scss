@@ -3,6 +3,7 @@
   form {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     width: 100%;
   }
   input {
@@ -16,7 +17,6 @@
     cursor: pointer;
     border: none;
     background: none;
-    padding-left: 10px;
     > svg {
       font-size: 30px;
     }

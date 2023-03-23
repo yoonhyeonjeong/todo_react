@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import TodoWrap from "./component/TodoWrap";
 import TodoHead from "./component/TodoHead";
 import TodoList from "./component/TodoList";
+import Dialog from "./component/Dialog";
 function App() {
   //  input 초기값 주기
   const [todo, setTodo] = useState("");
@@ -18,6 +19,7 @@ function App() {
       return; // 함수실행종료
     }
     if (todos.length > 9) {
+      setIsOpen(true);
       return; // 함수실행종료
     }
     // 새로운 객체 형태의 변수 생성 해서 빈배열에 집어넣기
@@ -40,7 +42,11 @@ function App() {
     });
     setTodos(filterArray);
   };
+  const [isOpen, setIsOpen] = useState(false);
 
+  const closeDialog = () => {
+    setIsOpen(false);
+  };
   return (
     <div className="App">
       <TodoWrap>
@@ -49,7 +55,7 @@ function App() {
         </div>
         <TodoHead todoinsert={todoInsert} todocheck={todoCheck} todo={todo} />
         <TodoList todolist={todos} tododelete={todoDelete} setTodo={setTodos} />
-        {todos.length > 9 && "모달팝업띄울예정"}
+        {isOpen && <Dialog open={isOpen} closedialog={closeDialog} />}
       </TodoWrap>
     </div>
   );
