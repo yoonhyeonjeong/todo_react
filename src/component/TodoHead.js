@@ -2,7 +2,7 @@ import React from "react";
 import { BsPlusCircleFill } from "react-icons/bs";
 import "../css/TodoHead.scss";
 function TodoHead(props) {
-  const { todoinsert, todocheck, todo } = props;
+  const { todoinsert, todocheck, todo, todoAdd } = props;
   const handleSubmit = (event) => {
     event.preventDefault();
     todoinsert();
@@ -16,6 +16,7 @@ function TodoHead(props) {
           value={todo}
           onChange={(e) => {
             todocheck(e);
+            todoAdd(e);
           }}
         />
         <button className="todo_btn" type="submit">

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import "../css/TodoList.scss";
-import { BsCheckCircleFill, BsCheckCircle } from "react-icons/bs";
+import { BsCheckCircleFill, BsCheckCircle, BsPencilSquare } from "react-icons/bs";
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 
 function TodoList(props) {
-  const { todolist, tododelete, setTodo, todoedit } = props;
+  const { todolist, tododelete, setTodo, todoAdd } = props;
   // 개별체크
   // 1. 리스트 추가할때마다 todot상태 저장하는 배열생성
   const [check, setCheck] = useState(todolist.map((todo) => todo.checked));
@@ -40,6 +40,7 @@ function TodoList(props) {
     });
     console.log("editText", editText);
   };
+
   return (
     <ul className="todo_list">
       <li>
@@ -65,10 +66,10 @@ function TodoList(props) {
             <button
               className="btn_edit"
               onClick={() => {
-                todoEdit();
+                todoAdd();
               }}
             >
-              <AiFillEdit />
+              <BsPencilSquare />
             </button>
             <button
               className="btn_delete"

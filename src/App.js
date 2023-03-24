@@ -7,6 +7,7 @@ import Dialog from "./component/Dialog";
 function App() {
   //  input 초기값 주기
   const [todo, setTodo] = useState("");
+  // input 값 집어넣기~
   const todoCheck = (e) => {
     setTodo(e.target.value);
   };
@@ -26,6 +27,7 @@ function App() {
     const newTodo = {
       id: todos.length,
       text: todo,
+      memo: "",
     };
     setTodos([...todos, newTodo]);
     // insert 하고 남은값 초기화
@@ -42,19 +44,29 @@ function App() {
     });
     setTodos(filterArray);
   };
+  // Modal
   const [isOpen, setIsOpen] = useState(false);
-
   const closeDialog = () => {
     setIsOpen(false);
   };
+  // add text
+  // 1. useState에 빈값 담기
+  const [addMemo, setaddMemo] = useState("");
+  // 2. 함수실행
+  const todoAdd = (e) => {
+    // 2. todos 카피
+    setaddMemo(e.target.value);
+    console.log(addMemo);
+  };
+  console.log(todos);
   return (
     <div className="App">
       <TodoWrap>
         <div>
           <h2>Todo - {todos.length}tasks</h2>
         </div>
-        <TodoHead todoinsert={todoInsert} todocheck={todoCheck} todo={todo} />
-        <TodoList todolist={todos} tododelete={todoDelete} setTodo={setTodos} />
+        <TodoHead todoinsert={todoInsert} todocheck={todoCheck} todo={todo} todoAdd={todoAdd} />
+        <TodoList todolist={todos} tododelete={todoDelete} setTodo={setTodos} todoAdd={todoAdd} />
         {isOpen && <Dialog open={isOpen} closedialog={closeDialog} />}
       </TodoWrap>
     </div>
