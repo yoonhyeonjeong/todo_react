@@ -54,9 +54,15 @@ function App() {
   const [addMemo, setaddMemo] = useState("");
   // 2. 함수실행
   const todoAdd = (e) => {
-    // 2. todos 카피
+    // 3. state변경함수에 현재 value값 넣기
     setaddMemo(e.target.value);
-    console.log(addMemo);
+    // 4. 할일들 변수 카피
+    const copyArray = [...todos];
+    // 5. 카피한 변수 변형주기
+    copyArray.map((item) => {});
+    setTodos(copyArray);
+    console.log(todos);
+    console.log(e.target.value);
   };
   console.log(todos);
   return (

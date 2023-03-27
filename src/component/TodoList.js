@@ -65,8 +65,8 @@ function TodoList(props) {
           <div className="btn_wrap">
             <button
               className="btn_edit"
-              onClick={() => {
-                todoAdd();
+              onClick={(e) => {
+                todoAdd(e);
               }}
             >
               <BsPencilSquare />
