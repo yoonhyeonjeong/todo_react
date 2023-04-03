@@ -12,8 +12,35 @@ dialog {
   p {
     margin-bottom: 10px;
   }
-  &::backdrop {
-    background: rgba(224, 228, 232, 0.9);
-    animation: 0.4s ease fade;
+  .memo_title {
+    font-weight: bold;
+    font-size: 20px;
+  }
+  textarea {
+    width: 300px;
+    height: 100px;
+    padding: 10px;
+    resize: none;
+    margin-top: 10px;
+    border: solid 1px #eee;
+    font-size: 15px;
+  }
+  .btn_wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    > button {
+      padding: 10px 5px;
+      width: 150px;
+      border-radius: 16px;
+      &.dialog_add {
+        background: #4cc155;
+        color: #fff;
+        margin-right: 10px;
+      }
+      &.dialog_close {
+        border: solid 1px #eee;
+      }
+    }
   }
 }
