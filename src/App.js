@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
 import TodoWrap from "./component/TodoWrap";
 import TodoHead from "./component/TodoHead";
 import TodoList from "./component/TodoList";
@@ -48,7 +48,6 @@ function App() {
   const closeDialog = () => {
     setIsOpen(false);
   };
-  // console.log("todos", todos);
 
   return (
     <div className="App">

@@ -17,53 +17,50 @@ function TodoList(props) {
       return newChecks;
     });
   };
+  
+  // 전체 삭제
   const AllDelete = () => {
-    const copyList = [...todolist];
-    const filterList = copyList.filter((e) => {
-      return false;
-    });
-    console.log(filterList);
-    setTodo(filterList);
+    setTodo([]);
   };
+
   // memodialog 상태값
   const [editMode, setEditMode] = useState(false);
   const memoOpen = () => {
+    setaddMemo("");
     setEditMode(true);
   };
   const closeMemo = () => {
     setEditMode(false);
   };
 
-  // memodialog value값
-
-  // const [addMemo, setaddMemo] = useState(todolist.map((todo) => todo.memo));
-  // console.log("addMemo", addMemo);
-
+  // memo 배열 업데이트
   const [addMemo, setaddMemo] = useState(todolist.map((todo) => todo.memo));
-  console.log("addMemo", addMemo);
   const memoCheck = (e, index) => {
-    // 1. 메모 배열 카피
-    const copyMemo = [...addMemo];
-    // 2. 메모 배열의 n번째  = 현재value
-    copyMemo[index] = e.target.value;
-    console.log("copyMemo", copyMemo);
-    // 3. 메모 배열 업데이트
-    setaddMemo(copyMemo);
-    console.log(index, "index");
-  };
+    // // 1. 메모 배열 카피
+    // const copyMemo = [...addMemo];
+    // // 2. 메모 배열의 n번째  = 현재value
+    // copyMemo[index] = e.target.value;
+    // // 3. 메모 배열 업데이트
+    // setaddMemo(copyMemo);
 
+    setaddMemo((prevMemo) => {
+      console.log('prevMemo', prevMemo)
+      const newMemo = [...prevMemo];
+      newMemo[index] = e.target.value;
+      return newMemo;
+    });
+  };
+  console.log(addMemo)
   // todoAdd
   const todoAdd = (id) => {
-    console.log(id);
     // id와 일치하는 투두 아이템 찾기
     const targetTodo = todolist.find((todo) => todo.id === id);
-    console.log(targetTodo);
     // // targetTodo의 memo 속성값 변경
     targetTodo.memo = addMemo[id];
     // // todos state 업데이트
     setTodo([...todolist]);
+    setaddMemo("");
   };
-  console.log(todolist);
   return (
     <ul className="todo_list">
       <li>
@@ -85,7 +82,7 @@ function TodoList(props) {
             autoFocus
           />
           <label htmlFor={todolist[i].id}>{todolist[i].text}</label>
-          <div>{todolist[i].memo}</div>
+          <div className="memo_text">{todolist[i].memo}</div>
           <div className="btn_wrap">
             <button className="btn_edit" onClick={memoOpen}>
               <BsPencilSquare />
@@ -97,7 +94,6 @@ function TodoList(props) {
               }}
             >
               <AiFillDelete />
-              {i}
             </button>
           </div>
           <MemoDialog
